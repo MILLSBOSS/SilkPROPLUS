@@ -1,0 +1,4 @@
+name: SilkPRO
+version: '1.0'
+main: me.MILLSBOSS.silkPRO.SilkPRO
+api-version: '1.21'
