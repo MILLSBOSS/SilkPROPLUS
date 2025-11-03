@@ -65,20 +65,8 @@ public class AnvilSilkListener implements Listener {
         if (!lore.contains(line)) lore.add(line);
         rMeta.setLore(lore);
 
-        // Preserve rename text entered in the anvil UI
-        String rename = inv.getRenameText();
-        if (rename != null && !rename.isBlank()) {
-            rMeta.setDisplayName(rename);
-        }
-
         result.setItemMeta(rMeta);
 
         event.setResult(result);
-        // Show the level cost in the anvil
-        try {
-            inv.setRepairCost(8);
-        } catch (Throwable ignored) {
-            // Fallback for API variance; not critical for functionality
-        }
     }
 }

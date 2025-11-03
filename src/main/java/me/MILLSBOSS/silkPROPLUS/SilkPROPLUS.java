@@ -25,6 +25,8 @@ public final class SilkPROPLUS extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new SpawnerSilkListener(silkKey), this);
         getServer().getPluginManager().registerEvents(new LibrarianTradeListener(silkKey), this);
         getServer().getPluginManager().registerEvents(new AnvilSilkListener(silkKey), this);
+        // Allow removing SilkPRO via grindstone like normal enchantments
+        getServer().getPluginManager().registerEvents(new me.MILLSBOSS.silkPRO.GrindstoneSilkRemovalListener(silkKey), this);
 
         // Initialize and register EggDrops functionality
         saveDefaultConfig();
