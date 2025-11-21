@@ -2,6 +2,7 @@ package me.MILLSBOSS.silkPROPLUS;
 
 import me.MILLSBOSS.eggDrops.DropListener;
 import me.MILLSBOSS.eggDrops.PluginConfig;
+import me.MILLSBOSS.eggDrops.SpawnerSpawnListener;
 import me.MILLSBOSS.silkPRO.AnvilSilkListener;
 import me.MILLSBOSS.silkPRO.LibrarianTradeListener;
 import me.MILLSBOSS.silkPRO.SilkPROCommand;
@@ -32,6 +33,8 @@ public final class SilkPROPLUS extends JavaPlugin {
         saveDefaultConfig();
         PluginConfig.initDefaults(this);
         getServer().getPluginManager().registerEvents(new DropListener(this, random), this);
+        // Tag mobs that originate from spawners so egg drop chance applies equally
+        getServer().getPluginManager().registerEvents(new SpawnerSpawnListener(this), this);
     }
 
     @Override

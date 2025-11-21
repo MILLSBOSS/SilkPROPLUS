@@ -28,7 +28,10 @@ public class DropListener implements Listener {
     public void onEntityDeath(EntityDeathEvent event) {
         if (!(event.getEntity() instanceof LivingEntity living)) return;
         Player killer = living.getKiller();
-        if (killer == null) return; // only when killed by player
+        boolean spawnerSpawned = living.hasMetadata(SpawnerSpawnListener.META_SPAWNER_TAG);
+        // Preserve original behavior (player kills) but also allow equal chance for spawner-spawned mobs
+        // even if they die without a direct player killer (e.g., farm mechanics).
+        if (killer == null && !spawnerSpawned) return;
 
         EntityType type = living.getType();
         Material eggMat = resolveEggMaterial(type);
